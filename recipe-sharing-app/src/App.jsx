@@ -1,4 +1,4 @@
-import {Router} from "react-router-dom";
+import {Router, Routes} from "react-router-dom";
 import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
@@ -13,10 +13,10 @@ function App() {
       </nav>
       <AddRecipeForm />
       <RecipeList />
-      <Router>
+      <Routes>
         <Route path="/" element={<RecipeList />} />
         <Route path="/recipe" element={<RecipeDetails />} />
-      </Router>
+      </Routes>
     </>
   );
 }
