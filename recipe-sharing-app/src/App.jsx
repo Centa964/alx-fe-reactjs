@@ -1,4 +1,4 @@
-import {Routes, Route} from "react-router-dom";
+import {Routes, Route, useParams} from "react-router-dom";
 import AddRecipeForm from "./components/AddRecipeForm";
 import RecipeList from "./components/RecipeList";
 import RecipeDetails from "./components/RecipeDetails";
@@ -17,8 +17,12 @@ function App() {
         <Route path="/" element={<RecipeList />} />
         <Route path="/recipe" element={<RecipeDetails />} />
       </Routes>
+      
     </>
   );
 }
-
+const RecipeDetailsWrapper = () => {
+  const { recipeId } = useParams();
+  return <RecipeDetails recipeId={recipeId} />;
+};
 export default App;
