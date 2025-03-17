@@ -25,7 +25,7 @@ const RecipeDetail = () => {
       <div className="flex justify-center">
         <img src={recipe.image} alt={recipe.title} className="w-1/2" />
       </div>
-      <div className="my-8">
+      <div className="my-8 shadow-lg"> 
         <h2 className="text-2xl font-bold">Ingredients</h2>
         <ul className="list-disc ml-8">
           {recipe.ingredients.map((ingredient, index) => (
