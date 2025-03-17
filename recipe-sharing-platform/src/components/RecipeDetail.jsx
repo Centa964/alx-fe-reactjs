@@ -1,6 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-const RecipeDetail = ({ recipe }) => {
+const RecipeDetail = () => {
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState(null);
+
+  useEffect(() => {
+    fetch('/src/data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        const selectedRecipe = data.find((item) => item.id === parseInt(id, 10));
+        setRecipe(selectedRecipe);
+      })
+      .catch((error) => console.error('Error Loading Recipe:', error));
+  }, [id]);
+
+  if (!recipe) {
+    return <div className="text-center">Loading recipe...</div>;
+  }
+
   return (
     <div className="container mx-auto">
       <h1 className="text-3xl font-bold my-8">{recipe.title}</h1>
