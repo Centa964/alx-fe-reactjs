@@ -15,8 +15,8 @@ export async function searchUsers(username, location, minRepos, page = 1) {
   if (minRepos) query += ` repos:>${minRepos}`;
 
   try {
-    const response = await axios.get(`https://api.github.com/search/users`, {
-      params: { q: query, page }
+    const response = await axios.get(`https://api.github.com/search/users?q=${query}`, {
+      params: { page }
     });
     return response.data;
   } catch (error) {
